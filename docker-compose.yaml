@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  build_right:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./qmk_firmware:/build/qmk_firmware
+      - ./my_keymap:/build/my_keymap
+      - ./uf2:/build/uf2
+    command: "/build/build.sh right"
+  build_left:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./qmk_firmware:/build/qmk_firmware
+      - ./my_keymap:/build/my_keymap
+      - ./uf2:/build/uf2
+    command: "/build/build.sh left"
